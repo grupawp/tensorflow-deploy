@@ -1,0 +1,19 @@
+# application section
+application:
+  uploadTimeoutInSec: 180
+
+# discovery section
+discovery:
+  dns:
+    serviceSuffix: "service"
+
+# storage section
+storage:
+  filesystem:
+    base:
+      basePath: "/tfdeploy"
+
+# metadata section
+metadata:
+  sqldb:
+    dsn: "/tfdeploy/tfdeploy.db"

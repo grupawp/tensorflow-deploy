@@ -1,0 +1,13 @@
+FROM alpine:3
+
+COPY bin/tensorflow_deploy /
+COPY bin/bootstrap /
+
+COPY packaging/launch-tfd.sh /
+COPY packaging/config.yaml /usr/local/etc/config.yaml
+
+RUN mkdir /tfdeploy
+
+WORKDIR /tfdeploy
+
+ENTRYPOINT [ "/launch-tfd.sh" ]

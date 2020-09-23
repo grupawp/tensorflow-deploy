@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  tfs-demo-intro:
+    build:
+      context: tfs/
+    volumes:
+      - tfdeploy:/tfdeploy
+    networks:
+      services:
+        aliases:
+          - tfs-demo-intro.service
+    depends_on:
+      - tfd
+
+  tfs-demo-labels:
+    build:
+      context: tfs/
+    volumes:
+      - tfdeploy:/tfdeploy
+    networks:
+      services:
+        aliases:
+          - tfs-demo-labels.service
+    depends_on:
+      - tfd
+  
+  tfs-demo-hub:
+    build:
+      context: tfs/
+    volumes:
+      - tfdeploy:/tfdeploy
+    networks:
+      services:
+        aliases:
+          - tfs-demo-hub.service
+    depends_on:
+      - tfd
+
+  tfd:
+    environment:
+    - TFD_RELOAD_INTERVAL_IN_SEC=60
+    - TFD_TFS_ALLOWS_LABELS_FOR_UNAVAILABLE_MODELS=true
+    image: grupawp/tensorflow-deploy:1.0.0
+    ports:
+      - "9500:9500"
+    volumes:
+      - tfdeploy:/tfdeploy
+    networks:
+      services:
+
+  notebook:
+    image: grupawp/tensorflow-deploy-demo-notebook:1.0.0
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebook/notebooks:/home/jovyan/tensorflow_deploy_demo:Z
+      - tfdeploy:/tfdeploy
+    networks:
+      services:
+    depends_on:
+      - tfd
+      - tfs-demo-intro
+      - tfs-demo-labels
+      - tfs-demo-hub
+
+networks:
+  services:
+
+volumes:
+  tfdeploy:

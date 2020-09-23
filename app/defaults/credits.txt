@@ -1,0 +1,4 @@
+Package taken from https://github.com/mcuadros/go-defaults
+All credits go to https://github.com/mcuadros
+
+Package modified for our internal purpouses.

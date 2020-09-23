@@ -1,0 +1,40 @@
+# application section
+application:
+    listenHost: 0.0.0.0
+    listenPort: 9500
+    reloadIntervalInSec: 300
+    maxAutoReloadDurationInSec: 900
+    uploadTimeoutInSec: 300
+    defaultModelLabel: canary
+
+# discovery section
+discovery:
+    # dns:
+    #     serviceSuffix: suffix-without-dot
+    #     defaultInstancePort: 10500
+    plaintext:
+        hostsPath: '/tfdeploy/dns.txt'
+
+# storage section
+storage:
+    filesystem:
+        model:
+            archiveName: example_model_archive.tar
+            basePath: /tfdeploy/models
+            configName: example_models.config
+            emptyConfigName: example_empty.config
+            incomingArchivePath: /tfdeploy/incoming/models
+            directoryPermissions: 0750
+            filePermissions: 0640
+        module:
+            archiveName: example_module_archive.tar
+            basePath: /tfdeploy/modules
+            incomingArchivePath: /tfdeploy/incoming/modules
+            directoryPermissions: 0750
+            filePermissions: 0640
+
+# metadata section
+metadata:
+    sqldb:
+        driver: sqlite3
+        dsn: example_metadata.db

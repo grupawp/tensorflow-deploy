@@ -1,0 +1,6 @@
+# dirs
+.vscode/*
+.ipynb_checkpoints
+
+# dev dirs by user
+cmd/greg-dev/*

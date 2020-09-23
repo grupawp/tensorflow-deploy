@@ -1,0 +1,18 @@
+# REST API
+
+* [Common Endpoints](api-common.md)
+* [Models Endpoints](api-models.md)
+    * [Add Model](api-models.md#Add-Model)
+    * [Download Model](api-models.md#Download-Model)
+    * [Set Model Label](api-models.md#Set-Model-Label)
+    * [Revert Stable Label](api-models.md#Revert-Stable-Label)
+    * [Delete Model Label](api-models.md#Delete-Model-Label)
+    * [Delete Model](api-models.md#Delete-Model)
+    * [List Models](api-models.md#List-Models)
+    * [Reload Models](api-models.md#Reload-Models)
+    * [Get TFS Config](api-models.md#Get-TFS-Config)
+* [Modules Endpoints](api-modules.md)
+    * [Add Module](api-modules.md#Add-Module)
+    * [Download Module](api-modules.md#Download-Module)
+    * [Delete Module](api-modules.md#Delete-Module)
+    * [List Modules](api-modules.md#List-Modules)
