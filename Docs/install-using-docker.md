@@ -73,7 +73,7 @@ $ docker run --name tfd -v ~/tfdeploy:/tfdeploy -p 9500:9500 grupawp/tensorflow-
 # Download TensorFlow Serving image
 $ docker pull tensorflow/serving
 # Run tfs. Optionaly, add -d to run container as a daemon.
-$ docker run --name tfs-1 -v ~/tfdeploy/models:/models -p 8500:8500 -p 8501:8501 tensorflow/serving --model_config_file=/models/empty.config
+$ docker run --name tfs-1 -v ~/tfdeploy/models:/models -p 8500:8500 -p 8501:8501 tensorflow/serving --model_config_file=/models/empty.config --allow_version_labels_for_unavailable_models
 ```
 
 Test it by using utils
