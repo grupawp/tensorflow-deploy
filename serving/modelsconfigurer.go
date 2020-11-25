@@ -187,7 +187,7 @@ func (sc *ServableConfig) RemoveModel(ctx context.Context, id app.ModelID) error
 	for k, v := range configs {
 		if v.GetName() == id.Name {
 			labels := v.GetVersionLabels()
-			if labels == nil {
+			if labels == nil && len(id.Label) > 0 {
 				return errVersionNotFound
 			}
 			if isLabelStable(labels, id.Version) {
