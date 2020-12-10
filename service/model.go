@@ -164,7 +164,7 @@ func (s *ModelsService) SetLabel(ctx context.Context, model app.ModelID) (*app.L
 		return nil, err
 	}
 
-	if model.Label == app.StableLabel {
+	if model.Label == app.StableLabel && prevVersion != 0 {
 		lastStableModel := app.ModelID{ServableID: model.ServableID, Version: prevVersion, Label: app.PrevStableLabel}
 		if err := s.metadata.ChangeLabel(ctx, app.ModelData{ModelID: lastStableModel, Status: app.StatusReady}); err != nil {
 			logging.ErrorWithStack(ctx, exterr.WrapWithFrame(err))

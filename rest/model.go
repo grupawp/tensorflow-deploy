@@ -269,8 +269,15 @@ func (rest *REST) setModelLabelToStableHandler(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	writeJSONSuccessResponse(w, r, http.StatusOK, fmt.Sprintf("model[%s-%s-%s] label '%s' changed from version [%d] to [%d]",
-		lChangedResp.Team, lChangedResp.Project, lChangedResp.Name, lChangedResp.Label, lChangedResp.PreviousVersion, lChangedResp.NewVersion))
+	if lChangedResp.PreviousVersion != 0 {
+		writeJSONSuccessResponse(w, r, http.StatusOK, fmt.Sprintf("model[%s-%s-%s] label '%s' changed from version [%d] to [%d]",
+			lChangedResp.Team, lChangedResp.Project, lChangedResp.Name, lChangedResp.Label, lChangedResp.PreviousVersion, lChangedResp.NewVersion))
+		return
+	}
+
+	writeJSONSuccessResponse(w, r, http.StatusOK, fmt.Sprintf("model[%s-%s-%s] label '%s' version set to [%d]",
+		lChangedResp.Team, lChangedResp.Project, lChangedResp.Name, lChangedResp.Label, lChangedResp.NewVersion))
+
 }
 
 func (rest *REST) setModelLabelHandler(w http.ResponseWriter, r *http.Request) {
